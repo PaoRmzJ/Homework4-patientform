@@ -10,6 +10,8 @@ Key features include:
 3. Data Persistence: Implements Local Storage to save all form fields automatically.
 4. User Cookies: Manages the "Remember Me" function by setting/deleting a cookie for the username.*/
 
+
+//Fetch Api Code
 function fetchStateOptions() {
     const stateSelect = document.getElementById('state');
     
@@ -648,3 +650,4 @@ if (firstName !== "") {
         location.reload();
     });
 }
+

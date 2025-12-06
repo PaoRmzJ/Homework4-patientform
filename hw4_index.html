@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+Program Name: hw4_index.html (patient-form HW4)
+Author: Paola Ramirez
+Date Created: 11/30/2025
+Date Last edited: 12/6/2025
+Version 4.0
+Description: This document contains the structure for the multi-section registration form. It uses modern HTML and CSS practices and now integrate elements such as a fixed, sticky header banner, a fixed footer, a custom modal for user alerts, and an embedded external resource (iFrame).
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration Form - Heart of Care</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="hw4_styles.css"> 
+    <!--load icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+</head>
+<body>
+    <!-- Header/Banner section -->
+  <header>
+    <div id="banner">
+      <div id="banner-text">
+       <img src="MedicalCenter_logo.svg" alt="Medical Logo" id="logo" width="150" height="150">
+        <h1>Patient Registration Form </h1>
+        <h2>Heart of Care Medical Center</h2>
+      </div>
+    </div>
+  </header>  
+  <div class="iframe-container">
+    <iframe class="frame" src="https://www.youtube.com/embed/dm1dSSZ7k3w" allowfullscreen frameborder='0'></iframe>
+  </div>
+  <div id="main">
+  <form name="signup" action="thankyou.html" method="POST">
+    <center id="welcome-msg"> 
+    <span id="welcome1"></span>
+    <span id="welcome2"></span>
+  </center>
+    <h3>INFORMATION</h3>
+ <!-- Form starts here -->
+    <!-- Patient details -->
+    <div id="patient-details">
+        <h2>Patient Details</h2>
+        <!--form fields-->
+ <table id="details_table">
+  <tr>
+    <td><label for="firstName">First Name:</label></td>
+    <td><input type="text" maxlength="30" id="firstName" name="firstName" title="Letters, apostrophes and dashes only." pattern="[a-zA-Z'\-]{1,30}" onblur="validateFirstName()" placeholder="Paola" required><br>
+    <span class="error" id="firstName-error"></span></td>
+  </tr>
+    <tr>
+    <td><label for="middleInitial">Middle Initial:</label></td>
+    <td><input type="text" maxlength="5" id="middleInitial" name="middleInitial" title="Letters only." onblur="validateMiddleInitial()" placeholder="A"><br><span class="error" id="middleInitial-error"></span></td>
+  </tr>
+  <tr>
+    <td><label for="lastName">Last Name:</label></td>
+    <td><input type="text" maxlength="30" id="lastName" name="lastName" title="Letters, apostrophes and dashes only." pattern="[a-zA-Z'\-]{1,30}" placeholder="Ramirez" onblur="validateLastName()" required><br><span class="error" id="lastName-error"></span></td>
+  </tr>
+  <tr>
+    <td><i class="fa-solid fa-cake-candles"></i><label for="dob">Date of Birth:</label></td>
+    <td><input type="date" id="dob" name="dob" onblur="validateDob()" required><br><span class="error" id="dob-error"></span></td>
+  </tr>
+
+ <tr id="gendertb">
+  <td><i class="fa-solid fa-mars-and-venus"></i>Gender:</td>
+  <td>
+    <input type="radio" id="male" name="gender" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label>
+    <input type="radio" id="other" name="gender" value="other">
+    <label for="other">Not listed:</label>
+    <input type="text" maxlength="20" placeholder="Specify gender" id="specify" name="specify">
+    <!--ERROR MESSAGE-->
+    <br>
+    <span class="error" id="gender-error"></span>
+  </td>
+</tr>
+
+  <tr>
+    <td><label for="ssn">SSN:</label></td>
+    <td><input type="password" maxlength="11" id="ssn" name="ssn" title="Expected pattern: ###-##-####" placeholder="123-45-6789" onblur="validateSSN()"><br><span class="error" id="ssn-error"></span></td>
+  </tr>
+</table>
+    </div>
+
+
+
+    <!--  CONTACT INFORMATION  -->
+    <div id="contact-info">
+        <h2>Patient Contact Information</h2>
+        <!-- form fields -->
+        <table>
+        <tr>
+        <td><i class="fa-solid fa-house"></i><label for="address1">Address Line 1:</label></td>
+         <td><input type="text" maxlength="30" id="addressLine1" name="addressLine1" title="Please enter your address" placeholder="3652 Courgar Rd." onblur="validateAddress1()" required><br><span class="error" id="address1-error"></span></td>
+        </tr>
+       <tr>
+        <td><label for="address2">Address Line 2:</label></td>
+        <td>
+          <input type="text" maxlength="30" id="addressLine2" name="addressLine2"><br><span id="address2-error" class="error"></span>
+      </td>
+    </tr>
+        </table>
+        <table id="city-state-zip-table">
+        <tr>
+          <td><i class="fa-solid fa-city"></i><label for="city">City:</label></td>
+          <td><input type="text" maxlength="30" id="city" name="city" placeholder="Houston" onblur="validateCity()" required><br><span class="error" id="city-error"></span></td>
+           <!--State dropdown field here! From: https://www.freeformatter.com/usa-state-list-html-select.html -->
+          <td><label for="state">State:</label></td>
+          <td>
+            <select id="state" name="state" onblur="validateState(); saveToLocalStorage('state');" required>
+              <option value="" disabled selected>Loading States...</option> 
+            </select><br>
+            <span class="error" id="state-error"></span>
+          </td>
+            <td><label for="zipcode">ZIPCode:</label><td>
+            <td><input type="text" maxlength="10" id="zipcode" name="zipcode" pattern="\d{5}(?:-\d{4})?" title="Numbers only." placeholder="77004"
+            onblur="validateZcode()"  
+            required><br><span class="error" id="zipcode-error"></span></td>
+        </tr>
+        </table>
+        <table>
+         <tr>
+          <td><i class="fa-solid fa-envelope"></i><label for="emailAddress">Email Address:</label></td>
+          <td><input type="email" id="emailAddress" name="emailAddress" placeholder="uh@cougaremail.com" title="Please enter your email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$" onblur="validateEmail()" required><br><span class="error" id="email-error"></span></td>
+        </tr>
+        <tr>
+        <td><i class="fa-solid fa-phone"></i><label for="phone">Phone Number:</label></td>
+         <td><input type="tel"  id="phone" name="phone" title="Please enter your Phone Number" placeholder="555-123-4567" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onblur="validatePhone()" required><br><span class="error" id="phone-error"></span></td>
+        </tr>
+        </table>
+    </div>
+
+
+
+    <!-- HEALTH INFORMATION  -->
+    <div id="health-info">
+        <h2>Patient Health Information</h2>
+        <!-- form fields -->
+        <table id="commentBox">
+            <tr>
+              <td>
+                <label for="symptoms-description">Symptoms Description:</label>
+                <textarea maxlength="300" placeholder="E.g. Sharp, throbbing pain on the right side of my head..." id="symptoms-description" name="symptoms-description" rows="4" cols="50"></textarea>
+              </td>
+            </tr>
+        </table>
+
+      <table>
+        <tr>
+        <td>Medical History<br>Have you had the following:</td>
+              <td>
+                  <div>
+                      <input type="checkbox" id="illness1" name="illness1" value="chickenPox">
+                      <label for="illness1">Chicken Pox</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="illness2" name="illness2" value="measels">
+                      <label for="illness2">Measles</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="illness3" name="illness3" value="covid19">
+                      <label for="illness3">COVID-19</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="illness4" name="illness4" value="smallPox">
+                      <label for="illness4">Smallpox</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="illness5" name="illness5" value="tetanus">
+                      <label for="illness5">Tetanus</label>
+                  </div>
+              </td>
+          </tr>
+            <tr>
+              <td>Have you been vaccinated?</td>
+              <td id="vacc-option">
+                <input type="radio" id="vacc-yes" name="vaccinated" value="Yes" required>
+                <label for="vacc-yes">Yes</label>
+                <input type="radio" id="vacc-no" name="vaccinated" value="No">
+                <label for="vacc-no">No</label>
+              </td>
+            </tr>
+            <tr>
+              <td>Do you have Insurance?</td>
+              <td>
+                <input type="radio" id="ins-yes" name="insuranced" value="Yes" required>
+                <label for="ins-yes">Yes</label>
+                <input type="radio" id="ins-no" name="insuranced" value="No">
+                <label for="ins-no">No</label>
+              </td>
+            </tr>
+           <tr>
+               <td><label for="feeling">On a scale of 0 to 10, how are you feeling today?</label></td>
+              <td><input type="range" id="feeling" name="feeling" min="0" max="10" value="0" oninput="feelingValue.value = feeling.value">
+              <output id="feelingValue">0</output><br>
+              <small>0 = No pain, 10 = Worst possible pain</small>
+              </td>
+          </tr>
+        </table>
+    </div>
+
+    <!-- PATIENT PORTAL REGISTRATION  -->
+    
+        <h2>Patient Portal Registration</h2>
+
+        <!-- form fields -->
+    <div id="portal-registration">
+    <table>
+        <tr>
+            <td><i class="fa-solid fa-user"></i><label for="username">Username:</label></td>
+            <td><input type="text" id="username" name="username" minlength="5" maxlength="20" title="Username must contain at least 5 characters. Cannot start with a number. " placeholder="Coog3652" onblur="validateUsername()" required><br><span class="error" id="username-error"></span></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input type="password" id="password" name="password" minlength="8" maxlength="30" title="Password must contain at least 8 characters, one uppercase letter, one lowercase, one number, and one special character." placeholder="Required" onblur="validatePassword()" oninput="validatePassword()" onfocus="validatePassword()" required><br><span class="error" id="password-error"></span></td>
+        </tr>
+        <tr>
+            <td><label for="confirm-password">Confirm Password:</label></td>
+            <td><input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="20" title="Please confirm your password" placeholder="Required" onblur="confirmPassword()" oninput="confirmPassword()" onfocus="confirmPassword()" required><br><span class="error" id="password2-error"></span></td>
+        </tr>
+        <tr>
+            <td></td> <!--for alignment -->
+            <td>
+                <input type="submit" value="Submit" name="submit" id="submit">
+                <input type="reset" value="Reset Form" name="reset" id="reset">
+                <!--review button here-->
+                <input type="button" name="review" value="Review" id="review" onclick="reviewInput()">
+                <!--Validate button-->
+                <input type="button" name="validate" value="Validate" id="validate" onclick="validateAll()">
+            </td>
+        </tr>
+    </table>
+</div>
+ <div id="showInput"></div>
+</div>
+
+  <center>
+    
+  </center>
+</form>
+
+<!--alert box for validation--> 
+<div id="alert-box">
+    <div id="alert-content">
+        <h4>Please fill out all the required Information.</h4>
+        <button id="close-alert">OK</button>
+    </div>
+</div>
+
+<!--Footer iframe goes here-->
+<iframe id="footer-iframe" src="footer.html" width="100%" height="200px" title="footer"></iframe>
+
+<!--External JS-->
+<script src="hw4_script.js"></script>
+
+
+</body>
+</html>

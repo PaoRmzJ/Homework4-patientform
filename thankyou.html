@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en">
+<!--Program Name: thankyou.html 
+Author: Paola Ramirez
+Date Created: 11/30/2025
+Date Last edited: 12/6/2025
+Version 4.0
+Description: This file contains the thank you page that the patient index page loads when submitting and filling out the form correctly--> 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Heart of Care</title>
+    <link rel="stylesheet" href="hw4_styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="thank-you-container">
+        <div id="thx-banner">
+            <div id="thx-banner-text">
+             <img src="MedicalCenter_logo.svg" alt="Medical Logo" id="thx-logo" width="150" height="150">
+             <h1>Thank You for Registering!</h1>
+            </div>
+        </div>
+
+        <div id="thank-you-message">
+            <h2>Submission Successful</h2>
+            <p>Your patient registration has been successfully received by the Heart of Care Medical Center team.</p>
+            <p>We will contact you shortly to confirm your account and schedule your first visit.</p>
+            <p style="margin-top: 10px;">
+            <div id="access-date">
+            <h4>
+                Submitted: <span id="current-date"></span>
+            </h4>
+            </div>
+                <a href="hw4_index.html" class="home-button">Return to Home</a>
+        </div>
+    </div>
+
+        <!-- Footer -->
+    <footer>
+    <div class="footer-left">
+        <p>
+        &copy; <span id="dynamic-year"></span> Heart of Care Medical Center. <br>All Rights Reserved</p>
+    </div>
+    <div class="footer-center">
+        <img src="MedicalCenter_logo.svg" alt="Medical Logo" id="footer-logo" width="50" height="50">
+    </div>
+    <div class="footer-right">
+        <button onclick="window.open('https://www.facebook.com/', '_blank')">Contact Us</button>
+        <p>401 Wellness Blvd. Suite 210, Houston, TX 77002</p>
+    </div>
+</footer>
+
+<!--External JS for dynamic date-->
+<script src="hw4_script.js"></script>
+
+</body>
+</html>

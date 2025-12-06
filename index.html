@@ -223,12 +223,6 @@ Description: This document contains the structure for the multi-section registra
             <td><input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="20" title="Please confirm your password" placeholder="Required" onblur="confirmPassword()" oninput="confirmPassword()" onfocus="confirmPassword()" required><br><span class="error" id="password2-error"></span></td>
         </tr>
         <tr>
-            <td>
-            <label for="rememberMe">Remember Me</label>
-            <input type="checkbox" id="rememberMe" name="rememberMe" checked>
-            </td>
-        </tr>
-        <tr>
             <td></td> <!--for alignment -->
             <td>
                 <input type="submit" value="Submit" name="submit" id="submit">
@@ -237,6 +231,12 @@ Description: This document contains the structure for the multi-section registra
                 <input type="button" name="review" value="Review" id="review" onclick="reviewInput()">
                 <!--Validate button-->
                 <input type="button" name="validate" value="Validate" id="validate" onclick="validateAll()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <label for="rememberMe">Remember Me</label>
+            <input type="checkbox" id="rememberMe" name="rememberMe" checked>
             </td>
         </tr>
     </table>
@@ -266,6 +266,7 @@ Description: This document contains the structure for the multi-section registra
 
 </body>
 </html>
+
 
 
 

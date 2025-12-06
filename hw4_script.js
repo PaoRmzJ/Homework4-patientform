@@ -45,8 +45,6 @@ window.onload = function() {
 
     fetchStateOptions(); 
 
-}
-    
     // Dynamic Year in Footer
     const dynamicYear = document.getElementById('dynamic-year');
     if (dynamicYear) {
@@ -75,8 +73,25 @@ window.onload = function() {
             document.getElementById('alert-box').style.display = 'none';
         });
     }
-
-
+//updated submit action
+      if (submitButton) {
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            
+            // Check if the form is fully valid 
+            if (validateAll()) {
+                console.log("Form is valid. Redirecting to thankyou.html...");
+                
+                // Replacing POST request
+                window.location.href = 'thankyou.html';
+            } else {
+                // If the button was somehow clicked while validation failed, show alert
+                showAlert(); 
+            }
+        });
+    }
+    
+}
 
 
 // First Name validation js code
@@ -650,4 +665,5 @@ if (firstName !== "") {
         location.reload();
     });
 }
+
 

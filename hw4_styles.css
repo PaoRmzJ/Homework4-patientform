@@ -605,4 +605,14 @@ i {
 #welcome1 {
     font-weight: bold;
     color: #1e74a8;
+
+}
+
+
+/*Responsiveness*/
+@media screen and (max-width: 700px) {
+    form {
+        max-width: 400px;
+    }
+    
 }
